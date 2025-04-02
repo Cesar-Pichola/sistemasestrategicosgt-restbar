@@ -1,0 +1,27 @@
+.content-pos {
+    height: calc(100vh - 80px);
+    padding: 10px;
+    background-color: red;
+}
+
+.btn-category-selected{
+    background-color: #155DFC;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 18px;
+    margin-right: 10px;
+    white-space: nowrap;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+}
+
+.btn-category{
+    background-color: #DEE3FF ;
+    color: #155DFC;
+    padding: 8px 15px;
+    border-radius: 18px;
+    margin-right: 10px;
+    white-space: nowrap;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+}
