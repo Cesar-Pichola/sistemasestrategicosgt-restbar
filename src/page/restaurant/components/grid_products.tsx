@@ -1,5 +1,5 @@
 import CardProduct from "../../../components/cards/card_product";
-import {IProduct} from "../../../core/entities/index";
+import {IProduct} from "../../../core/models/index";
 
 function GridProducts() {
     return ( <>

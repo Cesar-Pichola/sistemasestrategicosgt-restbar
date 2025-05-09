@@ -1,18 +1,25 @@
+import { useState } from "react";
+import { dataC } from "../../Categories";
+import { useThemeStore } from "../../../stores/themeStore";
+
 function ListCategories() {
+      const colorTheme = useThemeStore((state) => state.themeColor);
+  
+  const [selectedCategory, setselectedCategory] = useState(1);
     return ( 
         <>
   <div className="w-full h-18  overflow-x-auto flex items-center ">
     <div className="flex ">
-      <div className="btn-category-selected">BEBIDAS CALIENTES</div>
-      <div className="btn-category">HAMBURGUESAS</div>
-      <div className="btn-category">PIZZAS</div>
-      <div className="btn-category">POSTRES</div>
-      <div className="btn-category">ENSALADAS</div>
-      <div className="btn-category">BEBIDAS FRÍAS</div>
-      <div className="btn-category">SNACKS</div>
-      <div className="btn-category">ENSALADAS</div>
-      <div className="btn-category">BEBIDAS FRÍAS</div>
-      <div className="btn-category">SNACKS</div>
+      {dataC.map((item,index)=>(
+        <div 
+        style={{
+        backgroundColor: selectedCategory == index ? colorTheme : `${colorTheme}1A`,
+        color: selectedCategory == index ? "": colorTheme
+        }}
+        className="btn-category-selected">{item.nombre.toLocaleUpperCase()}</div>
+      ))}
+      
+
     </div>
   </div>
 </>)

@@ -1,18 +1,23 @@
 import { IconType } from "react-icons";
 
 interface IInputTextSecundary {
-    Icon: IconType;
+    Icon?: IconType;
     placeholder?: String;
     type: String;
   }
   
   export const InputTextSecundary = ({ Icon, placeholder = "", type }: IInputTextSecundary) => {
     return (
-      <div className="flex border border-gray-100 bg-white rounded-xl py-3 px-5 focus-within:border-[#155DFC]">
-        <Icon className="icon-input text-gray-600" />
+      <div 
+      
+      className="flex border-1 border-gray-100 bg-white rounded-3xl  px-5 h-12 focus-within:border-gray-100 items-center">
+        {
+          Icon != null &&
+        <Icon className="icon-input text-gray-600 text-2xl" />
+        }
         <input
           type={`${type}`}
-          className="input-text"
+          className="input-text h-20"
           placeholder={`${placeholder}`}
         />
       </div>

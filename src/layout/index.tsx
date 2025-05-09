@@ -1,13 +1,17 @@
-import { Outlet } from "react-router-dom";
+import {  Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CiUser } from "react-icons/ci";
-import { FaUsers } from "react-icons/fa6";
-import logo from "../../assets/img/logo-sistema.png";
+import logo from "../assets/img/logo-sistema.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { IPages } from "../core/models";
+import { useThemeStore } from "../stores/themeStore";
 
 function Layout() {
   const [collapsed, setCollapsed] = useState(false);
+    const colorBoton = useThemeStore((state) => state.themeColor);
+  
+  const navigate = useNavigate();
 
   return (
     <>
@@ -36,8 +40,9 @@ function Layout() {
               button: ({ active }) => ({
                 backgroundColor: active ? "#DEE3FF" : "transparent",
               
-                color: active ? "#007BFF" : "#333",
+                color: active ? "#007BFF" : "#666666",
                 fontSize: "13px",
+                fontWeight: "400",
                 borderRadius: collapsed? "15px" : "30px",
                 transition: "all 0.3s ease",
                 "&:hover": {
@@ -48,23 +53,33 @@ function Layout() {
               }),
             }}
           >
-            <MenuItem icon={<CiUser />}>Mesas</MenuItem>
+            {/* <MenuItem icon={<CiUser />}>Mesas</MenuItem>
             <MenuItem icon={<CiUser />}>Ventas Mostrador</MenuItem>
-            <MenuItem icon={<CiUser />}>Caja</MenuItem>
+            <MenuItem icon={<CiUser />}>Caja</MenuItem> */}
+            {
+              ListPage.length > 0 &&
+              ListPage.map((e)=>(
+                <MenuItem onClick={() => {
+                  navigate(`${e.url}`);
+                }} icon={<CiUser />}>{e.name}</MenuItem>
+              )) 
+            }
             <SubMenu label="Menus" icon={<CiUser />}>
               <MenuItem> Menus</MenuItem>
               <MenuItem> Complementos</MenuItem>
               <MenuItem> Guarniciones</MenuItem>
               <MenuItem> Extras</MenuItem>
             </SubMenu>
-            <MenuItem active icon={<FaUsers />}>Clientes</MenuItem>
+            {/* <MenuItem active icon={<FaUsers />}>Clientes</MenuItem> */}
           </Menu>
           
         </Sidebar>
         <main className="h-screen w-full flex flex-col">
     
     {/* Barra superior */}
-    <div className="h-10 flex items-center bg-[#155DFC]">
+    <div 
+    style={{ backgroundColor: colorBoton }}
+    className="h-10 flex items-center bg-[#155DFC]">
       <GiHamburgerMenu
         className="text-[18px] text-white cursor-pointer"
         style={{ margin: "0px 10px" }}
@@ -87,3 +102,17 @@ function Layout() {
 }
 
 export default Layout;
+
+
+
+const ListPage : IPages[] = [
+  {
+    name: 'Mesas',
+    url : '/restauran/tables'
+  },
+  {
+    name: 'Categorias',
+    url : '/restauran/categories'
+  }
+
+]
