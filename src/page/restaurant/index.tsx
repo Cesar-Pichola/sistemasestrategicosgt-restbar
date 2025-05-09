@@ -1,8 +1,9 @@
+import { ButtonCustom, TextSecundary } from "../../components";
 import { InputTextSecundary } from "../../components/input/input_text_secundary";
 import ListCategories from "./components/categories";
 import GridProducts from "./components/grid_products";
 import "./style/restaurant.css";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoMdAdd } from "react-icons/io";
 
 function RestaurantPage() {
   return (
@@ -21,19 +22,46 @@ function RestaurantPage() {
             </div>
             <div
               className=" overflow-auto "
-              style={{ height: "calc(100vh - 250px)" }}
+              style={{ height: "calc(100vh - 260px)" }}
             >
               <GridProducts />
             </div>
           </div>
 
           <div
-            className="col-span-1 md:col-span-2 rounded-xl bg-white"
+            className="col-span-1 md:col-span-2 rounded-xl bg-white p-4 "
             
           >
-              <p className="flex justify-center text-[16px] text-gray-400  py-4">Centro 1 - Centro  </p>
-            <div>
+            <div
+            className=""
+            >
+               <TextSecundary
+            size={18}
+            fontWeight={400}
+            text={'Centro 1 - Centro'}
+            />
+
+            <div className="flex ">
+            <span className="color-complement rounded-3xl text-[12px] text-gray-600 h-10 px-4 flex items-center w-full">
+              Cesar Pichola
+            </span>
+            <div className="w-56 ml-3">
+              <ButtonCustom
+                        icon={IoMdAdd}
+                        text="Agregar cliente"
+                        />
+
             </div>
+            </div>
+            </div>
+            
+           
+
+
+
+          
+           
+            
           </div>
         </div>
       </>

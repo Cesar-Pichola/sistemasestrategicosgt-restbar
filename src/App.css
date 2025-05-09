@@ -2,14 +2,29 @@
 
  body {
 
-  scrollbar-color: #155DFC white;
+  scrollbar-color: var(--theme-color) white;
 
   background-color: #F2F5FF;
+  font-family: "Poppins", sans-serif;
 }
 
 
 p {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  
 }
 
+
+.bg-theme {
+  background-color: var(--theme-color);
+}
+.text-theme {
+  color: var(--theme-color);
+}
+.border-theme {
+  border-color: var(--theme-color);
+}
+
+.color-complement {
+  background-color: #F7F7F7;
+}
